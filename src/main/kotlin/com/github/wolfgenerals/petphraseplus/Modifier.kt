@@ -19,7 +19,7 @@ fun String.replace(list:List<Replace>): String {
 fun needModify(s: String): Boolean = config.enabled and !s.startsWith('/') and s.isNotBlank()
 
 fun modifyMessage(message: String): String =
-    "${config.start}${message.replace(config.replace).endInner(config.endInner)}${config.endOuter}"
+    "${config.start}${"喵".repeat(message.length)}${config.endInner}${config.endOuter}"
 
 private val punctuations = listOf(
     '!', '?', '.', ';', ':', '(', ')', '~', '"', '\'', '[', ']', '{', '}',
