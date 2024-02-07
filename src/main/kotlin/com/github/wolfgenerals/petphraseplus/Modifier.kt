@@ -16,10 +16,10 @@ fun String.replace(list:List<Replace>): String {
 }
 
 
-fun needModify(s: String): Boolean = config.enabled and !s.startsWith('/') and s.isNotBlank()
+fun needModify(s: String): Boolean = config.enabled and !s.startsWith('/') and s.isNotBlank() or s.startsWith("/me")
 
 fun modifyMessage(message: String): String =
-    "${config.start}${"喵".repeat(message.length)}${config.endInner}${config.endOuter}"
+    "${config.start}${message.map { if (it.isWhitespace() || it == ',' || it == '.' || it == '!' || it == '?') it else '喵' }.joinToString("")}${config.endInner}${config.endOuter}"
 
 private val punctuations = listOf(
     '!', '?', '.', ';', ':', '(', ')', '~', '"', '\'', '[', ']', '{', '}',
